@@ -3,6 +3,7 @@ let humanScore = 0
 let computerScore = 0
 const buttonsParent = document.querySelector('.buttons-parent');
 const buttons = buttonsParent.children;
+const results = document.querySelector('.results');
 
 buttons[0].addEventListener("click",() => playRound(buttons[0].textContent, getComputerChoice()));
 buttons[1].addEventListener("click",() => playRound(buttons[1].textContent, getComputerChoice()));
@@ -25,6 +26,7 @@ function getHumanChoice() {
 
 function playRound(humanChoice, computerChoice) {
     let result = 'lose'
+    const resultsP = document.createElement('p');
     humanChoice = humanChoice.toLowerCase()
     if (humanChoice === computerChoice) {
         result = null
@@ -40,15 +42,16 @@ function playRound(humanChoice, computerChoice) {
     }
     if (result === 'win') {
         humanScore++
-        console.log(`You win! ${capitalizeFirstLetter(humanChoice)} beats ${computerChoice}`)
+        resultsP.textContent = `You win! ${capitalizeFirstLetter(humanChoice)} beats ${computerChoice}`;
     }
     else if (result === 'lose') {
         computerScore++
-        console.log(`You lose! ${capitalizeFirstLetter(computerChoice)} beats ${humanChoice}`)
+        resultsP.textContent = `You lose! ${capitalizeFirstLetter(computerChoice)} beats ${humanChoice}`;
     }
     else {
-        console.log(`You both chose ${humanChoice}. It's a tie! Play again.`)
+        resultsP.textContent = `You both chose ${humanChoice}. It's a tie! Play again.`;
     }
+    results.appendChild(resultsP);
 }
 
 function capitalizeFirstLetter(word) {
