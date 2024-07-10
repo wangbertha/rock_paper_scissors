@@ -49,19 +49,19 @@ function capitalizeFirstLetter(word) {
     return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
 }
 
-function playGame(numRounds) {
-    humanScore = 0
-    computerScore = 0
-    for (let i=0; i<numRounds; i++) {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        if (humanSelection === 'Invalid choice') {
-            console.log("Round cancelled; choice was invalid.")
-        }
-        else playRound(humanSelection, computerSelection)
-    }
-    console.log(`Final score: You ${humanScore} vs. Computer ${computerScore}`)
-    if (humanScore > computerScore) console.log("You win!")
-    else if (humanScore === computerScore) console.log("It's a tie!")
-    else console.log("You lose!")
-}
+// function playGame(numRounds) {
+//     humanScore = 0
+//     computerScore = 0
+//     for (let i=0; i<numRounds; i++) {
+//         const humanSelection = getHumanChoice();
+//         const computerSelection = getComputerChoice();
+//         if (humanSelection === 'Invalid choice') {
+//             console.log("Round cancelled; choice was invalid.")
+//         }
+//         else playRound(humanSelection, computerSelection)
+//     }
+//     console.log(`Final score: You ${humanScore} vs. Computer ${computerScore}`)
+//     if (humanScore > computerScore) console.log("You win!")
+//     else if (humanScore === computerScore) console.log("It's a tie!")
+//     else console.log("You lose!")
+// }
