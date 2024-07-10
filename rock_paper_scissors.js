@@ -1,6 +1,12 @@
 const options = ['rock','paper','scissors']
 let humanScore = 0
 let computerScore = 0
+const buttonsParent = document.querySelector('.buttons-parent');
+const buttons = buttonsParent.children;
+
+buttons[0].addEventListener("click",() => playRound(buttons[0].textContent, getComputerChoice()));
+buttons[1].addEventListener("click",() => playRound(buttons[1].textContent, getComputerChoice()));
+buttons[2].addEventListener("click",() => playRound(buttons[2].textContent, getComputerChoice()));
 
 function getComputerChoice() {
     return options[Math.floor(Math.random() * options.length)]
