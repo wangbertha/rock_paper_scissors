@@ -25,6 +25,13 @@ function getHumanChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
+    if (humanScore === 5 || computerScore === 5) {
+        while (results.firstChild) {
+            results.removeChild(results.lastChild);
+        }
+        humanScore = 0;
+        computerScore = 0;
+    }
     let result = 'lose'
     const resultsP = document.createElement('p');
     humanChoice = humanChoice.toLowerCase()
@@ -49,9 +56,21 @@ function playRound(humanChoice, computerChoice) {
         resultsP.textContent = `You lose! ${capitalizeFirstLetter(computerChoice)} beats ${humanChoice}`;
     }
     else {
-        resultsP.textContent = `You both chose ${humanChoice}. It's a tie! Play again.`;
+        resultsP.textContent = `You both chose ${humanChoice}. It's a tie!`;
     }
+    resultsP.textContent += ` | Score: You ${humanScore} vs. Computer ${computerScore}`;
     results.appendChild(resultsP);
+
+    if (humanScore === 5) {
+        const resultsFinal = document.createElement('p');
+        resultsFinal.textContent = `You win! Final scoore: You ${humanScore} vs. Computer ${computerScore}`
+        results.appendChild(resultsFinal);
+    }
+    else if (computerScore === 5) {
+        const resultsFinal = document.createElement('p');
+        resultsFinal.textContent = `You lose! Final scoore: You ${humanScore} vs. Computer ${computerScore}`
+        results.appendChild(resultsFinal);
+    }
 }
 
 function capitalizeFirstLetter(word) {
